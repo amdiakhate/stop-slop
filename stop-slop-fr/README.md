@@ -35,29 +35,40 @@ Il traque et corrige les marqueurs IA **propres au français** :
 **Après :**
 > « L'IA change le travail dans la santé, la finance et le droit. Les radiologues lisent leurs clichés avec un modèle de détection ; les analystes laissent un agent trier les transactions suspectes. »
 
-## Structure
+## Structure (plugin Claude Code)
 
 ```
 stop-slop-fr/
-├── SKILL.md                  # Règles de base, checklist, notation (en français)
-├── references/
-│   ├── expressions.md        # Expressions à supprimer
-│   ├── structures.md         # Motifs structurels à éviter
-│   └── exemples.md           # Transformations avant/après, pensées en français
+├── .claude-plugin/
+│   └── plugin.json           # Manifeste du plugin
+├── skills/
+│   └── stop-slop-fr/
+│       ├── SKILL.md          # Règles de base, checklist, notation (en français)
+│       └── references/
+│           ├── expressions.md    # Expressions à supprimer
+│           ├── structures.md     # Motifs structurels à éviter
+│           └── exemples.md       # Transformations avant/après, pensées en français
 ├── README.md
 └── LICENSE
 ```
 
 ## Installation et utilisation
 
-**Claude Code :** placer ce dossier dans `~/.claude/skills/`.
+**Voie 1 — Plugin / marketplace (recommandé) :**
+
+```
+/plugin marketplace add amdiakhate/stop-slop
+/plugin install stop-slop-fr@amdiakhate-plugins
+```
+
+**Voie 2 — Copie manuelle du skill :**
 
 ```bash
 git clone https://github.com/amdiakhate/stop-slop.git
-cp -R stop-slop/stop-slop-fr ~/.claude/skills/
+cp -R stop-slop/stop-slop-fr/skills/stop-slop-fr ~/.claude/skills/
 ```
 
-Le skill se déclenche automatiquement quand vous rédigez, éditez ou relisez un texte français. Vous pouvez aussi l'invoquer explicitement avec `/stop-slop-fr`.
+Le skill se déclenche automatiquement quand vous rédigez, éditez ou relisez un texte français. Vous pouvez aussi l'invoquer explicitement avec `/stop-slop-fr:stop-slop-fr`.
 
 **Projets Claude :** téléverser `SKILL.md` et les fichiers de `references/` dans la base de connaissances.
 

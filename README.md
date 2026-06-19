@@ -37,33 +37,48 @@ Il traque et corrige les marqueurs IA **propres au français** :
 
 ## Structure
 
-```
-stop-slop-fr/                 # le skill français
-├── SKILL.md                  # règles de base, checklist, notation (en français)
-├── references/
-│   ├── expressions.md        # expressions à supprimer
-│   ├── structures.md         # motifs structurels à éviter
-│   └── exemples.md           # transformations avant/après, pensées en français
-├── README.md
-└── LICENSE
+Ce dépôt est aussi une **marketplace de plugins Claude Code**. Le skill français est empaqueté comme plugin dans `stop-slop-fr/`.
 
-SKILL.md, references/          # skill anglais original (conservé)
+```
+stop-slop/                              # ce dépôt = la marketplace
+├── .claude-plugin/
+│   └── marketplace.json                # catalogue
+├── stop-slop-fr/                       # le plugin français
+│   ├── .claude-plugin/
+│   │   └── plugin.json                 # manifeste du plugin
+│   ├── skills/
+│   │   └── stop-slop-fr/
+│   │       ├── SKILL.md                # règles de base, checklist, notation
+│   │       └── references/             # expressions, structures, exemples
+│   ├── README.md
+│   └── LICENSE
+├── SKILL.md, references/               # skill anglais original (conservé)
+└── README.md
 ```
 
 ## Installation et utilisation
 
-**Claude Code :** placer le dossier `stop-slop-fr/` dans `~/.claude/skills/`.
+**Voie 1 — Plugin / marketplace (recommandé) :**
+
+```
+/plugin marketplace add amdiakhate/stop-slop
+/plugin install stop-slop-fr@amdiakhate-plugins
+```
+
+Le skill est auto-découvert. Lancez `/reload-plugins` après l'installation si besoin.
+
+**Voie 2 — Copie manuelle du skill :**
 
 ```bash
 git clone https://github.com/amdiakhate/stop-slop.git
-cp -R stop-slop/stop-slop-fr ~/.claude/skills/
+cp -R stop-slop/stop-slop-fr/skills/stop-slop-fr ~/.claude/skills/
 ```
 
-Le skill se déclenche automatiquement quand vous rédigez, éditez ou relisez un texte français. Vous pouvez aussi l'invoquer explicitement avec `/stop-slop-fr`.
+Le skill se déclenche automatiquement quand vous rédigez, éditez ou relisez un texte français. Vous pouvez aussi l'invoquer explicitement avec `/stop-slop-fr:stop-slop-fr`.
 
-**Projets Claude :** téléverser `stop-slop-fr/SKILL.md` et les fichiers de `stop-slop-fr/references/` dans la base de connaissances.
+**Projets Claude :** téléverser `stop-slop-fr/skills/stop-slop-fr/SKILL.md` et les fichiers de `references/` dans la base de connaissances.
 
-**Appels API :** inclure `stop-slop-fr/SKILL.md` dans le prompt système ; les fichiers de référence se chargent à la demande.
+**Appels API :** inclure ce `SKILL.md` dans le prompt système ; les fichiers de référence se chargent à la demande.
 
 ## Notation
 

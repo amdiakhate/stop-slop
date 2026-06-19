@@ -1,0 +1,17 @@
+{
+  "$schema": "https://code.claude.com/schemas/marketplace.json",
+  "name": "amdiakhate-plugins",
+  "description": "Skills et plugins Claude Code par amdiakhate.",
+  "owner": {
+    "name": "amdiakhate"
+  },
+  "plugins": [
+    {
+      "name": "stop-slop-fr",
+      "source": "./stop-slop-fr",
+      "description": "Nettoie les textes français des marqueurs de l'IA. Adaptation française de stop-slop : amorces creuses, connecteurs scolaires, anglicismes, gérondif final, « on » impersonnel, faux contrastes, typographie française.",
+      "license": "MIT",
+      "keywords": ["french", "francais", "redaction", "anti-slop", "writing"]
+    }
+  ]
+}
