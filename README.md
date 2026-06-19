@@ -1,64 +1,74 @@
-# Stop Slop
+# Stop Slop 🇫🇷 — version française
 
-A skill for removing AI tells from prose.
+Un skill qui **nettoie les textes français des marqueurs de l'IA**. Il repère et supprime les tournures prévisibles qui trahissent un texte généré par un LLM, pour une prose qui sonne humaine et naturellement française.
 
-> 🇫🇷 **Version française :** une adaptation pour le français (et non une simple traduction) est disponible dans [`stop-slop-fr/`](stop-slop-fr/). Elle couvre les tics propres au français : gérondif final, « on » impersonnel, phrases clivées, anglicismes, connecteurs scolaires, énumérations ternaires et typographie française.
+> Ce dépôt est un fork francophone de [stop-slop](https://github.com/hardikpandya/stop-slop) de Hardik Pandya. Le skill français vit dans [`stop-slop-fr/`](stop-slop-fr/). C'est une **adaptation, pas une traduction** : l'IA écrit le français avec ses propres tics, que les règles anglaises ne couvrent pas. Le skill anglais original reste disponible à la racine ([`SKILL.md`](SKILL.md)).
 
-<img width="3840" height="2160" alt="G-Yg4RVbIAAhVxW" src="https://github.com/user-attachments/assets/902afc15-1f40-4a9d-af24-8cd67afb8ebf" />
+## À quoi ça sert
 
-## What this is
+Quand vous rédigez, éditez ou relisez un texte en français — article, e-mail, doc, post — le skill applique une discipline anti-« slop » : couper le remplissage, casser les structures formulaïques, nommer les acteurs, varier le rythme, faire confiance au lecteur. Le résultat est plus court, plus direct et moins reconnaissable comme « écrit par une IA ».
 
-AI writing has patterns. Predictable phrases, structures, rhythms. This skill teaches Claude (or any LLM) to catch and remove them.
+## Ce que ça fait concrètement
 
-## Skill Structure
+Il traque et corrige les marqueurs IA **propres au français** :
+
+- **Amorces creuses** — « Il est important de noter que », « Force est de constater que », « Soyons clairs ».
+- **Connecteurs scolaires en série** — « En outre », « Par ailleurs », « Néanmoins », « Ainsi ».
+- **Mots fétiches** — « crucial », « essentiel », « incontournable », et surtout « véritable ».
+- **Adverbes en -ment** — « véritablement », « profondément », « simplement », « fondamentalement ».
+- **Anglicismes et calques** — « impacter », « adresser un problème », « faire du sens », « au final ».
+- **Gérondif final** — la queue en « -ant » qui commente l'action (« …, ouvrant la voie à de nouvelles possibilités »). Tic IA français majeur, sans équivalent anglais.
+- **Le « on » impersonnel** — masque l'acteur comme la voix passive (« on observe que »).
+- **Phrases clivées** — « Ce qu'il faut retenir, c'est… », « C'est là que tout se joue. »
+- **Voix passive** — « la décision a été prise » → nommer qui décide.
+- **Agentivité factice** — « la donnée nous dit », « le marché récompense ».
+- **Faux contrastes** — « ce n'est pas X, c'est Y », « il ne s'agit pas de X mais de Y ».
+- **Énumérations ternaires** par réflexe et **fragmentation dramatique**.
+- **Formules de conclusion** automatiques — « En somme », « En définitive », « Vous l'aurez compris ».
+- **Typographie française** — guillemets « », espace insécable avant `: ; ! ?`, pas de tiret cadratin, pas de virgule d'Oxford.
+
+## Exemple
+
+**Avant :**
+> « À l'ère du tout-numérique, il est important de noter que l'IA est un véritable game-changer. En outre, force est de constater qu'elle impacte profondément tous les secteurs. La donnée nous le dit, transformant ainsi notre façon de travailler. En somme, l'avenir nous le dira. »
+
+**Après :**
+> « L'IA change le travail dans la santé, la finance et le droit. Les radiologues lisent leurs clichés avec un modèle de détection ; les analystes laissent un agent trier les transactions suspectes. »
+
+## Structure
 
 ```
-stop-slop/
-├── SKILL.md              # Core instructions
+stop-slop-fr/                 # le skill français
+├── SKILL.md                  # règles de base, checklist, notation (en français)
 ├── references/
-│   ├── phrases.md        # Phrases to remove
-│   ├── structures.md     # Structural patterns to avoid
-│   └── examples.md       # Before/after transformations
+│   ├── expressions.md        # expressions à supprimer
+│   ├── structures.md         # motifs structurels à éviter
+│   └── exemples.md           # transformations avant/après, pensées en français
 ├── README.md
 └── LICENSE
+
+SKILL.md, references/          # skill anglais original (conservé)
 ```
 
-## Quick start
+## Installation et utilisation
 
-**Claude Code:** Add this folder as a skill.
+**Claude Code :** placer le dossier `stop-slop-fr/` dans `~/.claude/skills/`.
 
-**Claude Projects:** Upload `SKILL.md` and reference files to project knowledge.
+```bash
+git clone https://github.com/amdiakhate/stop-slop.git
+cp -R stop-slop/stop-slop-fr ~/.claude/skills/
+```
 
-**Custom instructions:** Copy core rules from `SKILL.md`.
+Le skill se déclenche automatiquement quand vous rédigez, éditez ou relisez un texte français. Vous pouvez aussi l'invoquer explicitement avec `/stop-slop-fr`.
 
-**API calls:** Include `SKILL.md` in your system prompt. Reference files load on demand.
+**Projets Claude :** téléverser `stop-slop-fr/SKILL.md` et les fichiers de `stop-slop-fr/references/` dans la base de connaissances.
 
-## What it catches
+**Appels API :** inclure `stop-slop-fr/SKILL.md` dans le prompt système ; les fichiers de référence se chargent à la demande.
 
-**Banned phrases** - Throat-clearing openers, emphasis crutches, business jargon, all adverbs, vague declaratives, meta-commentary. See `references/phrases.md`.
+## Notation
 
-**Structural clichés** - Binary contrasts, negative listings, dramatic fragmentation, rhetorical setups, false agency, narrator-from-a-distance voice, passive voice. See `references/structures.md`.
+Avant de livrer un texte, le noter de 1 à 10 sur cinq dimensions : franchise, rythme, confiance, authenticité, densité. En dessous de 35/50 : réviser.
 
-**Sentence-level rules** - No Wh- sentence starters, no em dashes, no staccato fragmentation, no lazy extremes, active voice required.
+## Crédits et licence
 
-## Scoring
-
-Rate 1-10 on each dimension:
-
-| Dimension | Question |
-|-----------|----------|
-| Directness | Statements or announcements? |
-| Rhythm | Varied or metronomic? |
-| Trust | Respects reader intelligence? |
-| Authenticity | Sounds human? |
-| Density | Anything cuttable? |
-
-Below 35/50: revise.
-
-## Author
-
-[Hardik Pandya](https://hvpandya.com)
-
-## License
-
-MIT. Use freely, share widely.
+Adapté en français à partir de [stop-slop](https://github.com/hardikpandya/stop-slop) de [Hardik Pandya](https://hvpandya.com). Licence MIT — utilisez et partagez librement.
