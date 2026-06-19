@@ -9,9 +9,11 @@
     {
       "name": "stop-slop-fr",
       "source": "./stop-slop-fr",
-      "description": "Nettoie les textes français des marqueurs de l'IA. Adaptation française de stop-slop : amorces creuses, connecteurs scolaires, anglicismes, gérondif final, « on » impersonnel, faux contrastes, typographie française.",
+      "displayName": "Stop Slop (Français)",
+      "description": "Removes AI writing tells from French prose: filler, clichés, anglicisms, final gerunds, passive voice, French typography.",
+      "category": "productivity",
       "license": "MIT",
-      "keywords": ["french", "francais", "redaction", "anti-slop", "writing"]
+      "keywords": ["french", "francais", "writing", "redaction", "anti-slop", "ai-detection", "style"]
     }
   ]
 }

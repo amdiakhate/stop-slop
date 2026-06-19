@@ -1,6 +1,8 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "stop-slop-fr",
-  "description": "Élimine les tics d'écriture de l'IA dans les textes en français : amorces creuses, connecteurs scolaires, mots fétiches, anglicismes, gérondif final, « on » impersonnel, faux contrastes, voix passive et typographie française.",
+  "displayName": "Stop Slop (Français)",
+  "description": "Removes AI writing tells from French prose: filler, clichés, anglicisms, final gerunds, passive voice, French typography.",
   "version": "1.0.0",
   "author": {
     "name": "amdiakhate"
@@ -8,5 +10,5 @@
   "homepage": "https://github.com/amdiakhate/stop-slop/tree/main/stop-slop-fr",
   "repository": "https://github.com/amdiakhate/stop-slop",
   "license": "MIT",
-  "keywords": ["french", "francais", "redaction", "writing", "anti-slop", "ai-tells", "style"]
+  "keywords": ["french", "francais", "writing", "redaction", "anti-slop", "ai-detection", "style"]
 }
