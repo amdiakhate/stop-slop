@@ -48,8 +48,8 @@ stop-slop/                              # ce dépôt = la marketplace
 │   │   └── plugin.json                 # manifeste du plugin
 │   ├── skills/
 │   │   └── stop-slop-fr/
-│   │       ├── SKILL.md                # règles de base, checklist, notation
-│   │       └── references/             # expressions, structures, exemples
+│   │       ├── SKILL.md                # règles, méthode, garde-fous, notation
+│   │       └── references/             # expressions, structures, anglicismes, registres, exemples
 │   ├── README.md
 │   └── LICENSE
 ├── SKILL.md, references/               # skill anglais original (conservé)

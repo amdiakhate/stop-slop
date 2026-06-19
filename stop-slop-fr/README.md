@@ -43,11 +43,13 @@ stop-slop-fr/
 │   └── plugin.json           # Manifeste du plugin
 ├── skills/
 │   └── stop-slop-fr/
-│       ├── SKILL.md          # Règles de base, checklist, notation (en français)
+│       ├── SKILL.md          # Règles, méthode, garde-fous, checklist, notation
 │       └── references/
 │           ├── expressions.md    # Expressions à supprimer
-│           ├── structures.md     # Motifs structurels à éviter
-│           └── exemples.md       # Transformations avant/après, pensées en français
+│           ├── structures.md     # Motifs structurels et de mise en forme
+│           ├── anglicismes.md    # Calques et faux-amis de l'anglais
+│           ├── registres.md      # Réglage du ton par type de texte
+│           └── exemples.md       # Transformations avant/après, par registre
 ├── README.md
 └── LICENSE
 ```

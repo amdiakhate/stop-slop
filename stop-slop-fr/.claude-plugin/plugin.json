@@ -3,7 +3,7 @@
   "name": "stop-slop-fr",
   "displayName": "Stop Slop (Français)",
   "description": "Removes AI writing tells from French prose: filler, clichés, anglicisms, final gerunds, passive voice, French typography.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "amdiakhate"
   },
